@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานการวิเคราะห์ระบบสารสนเทศและแผนการจัดทำ Landing Page - iRAM MedNU (Ultimate Evolution)</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background-color: #f7fafc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1150px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        header {
+            border-bottom: 4px solid #1a365d;
+            padding-bottom: 25px;
+            margin-bottom: 40px;
+        }
+        .header-tag {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 9.5pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #1a365d;
+            font-size: 24pt;
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+        }
+        .subtitle {
+            font-size: 13pt;
+            color: #4a5568;
+            margin: 0;
+            font-weight: 500;
+        }
+        h2 {
+            color: #2c5282;
+            font-size: 16pt;
+            border-left: 6px solid #2c5282;
+            padding-left: 15px;
+            margin-top: 45px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #2d3748;
+            font-size: 12.5pt;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        p, li {
+            font-size: 11pt;
+            color: #4a5568;
+            text-align: justify;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 10.5pt;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 14px 18px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #1a365d;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10pt;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 8.5pt;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .bg-looker { background-color: #d69e2e; color: #fff !important; }
+        .bg-nu { background-color: #dd6b20; }
+        .bg-cloudflare { background-color: #319795; }
+        .bg-workers { background-color: #3182ce; }
+        .bg-pbi { background-color: #b7791f; }
+        .bg-sites { background-color: #4a5568; }
+        .bg-gas { background-color: #4285f4; }
+        .bg-legacy { background-color: #e53e3e; }
+        
+        .recommendation-box {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #3182ce;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .recommendation-box h3 {
+            color: #2b6cb0;
+            margin-top: 0;
+        }
+        .highlight-grid {
+            display: block;
+            margin: 20px 0;
+        }
+        .grid-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-top: 4px solid #2c5282;
+        }
+        .grid-item h4 {
+            margin: 0 0 12px 0;
+            color: #1a365d;
+            font-size: 12.5pt;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        .tech-list {
+            margin-top: 5px;
+            font-size: 9.5pt;
+            color: #718096;
+            margin-bottom: 15px;
+        }
+        .page-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            color: #718096;
+            font-size: 9pt;
+            border-top: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            border-radius: 0 0 8px 8px;
+        }
+        .master-footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px dashed #e2e8f0;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-tag">Comprehensive Digital Ecosystem Blueprint</div>
+        <h1>รายงานวิเคราะห์ระบบนิเวศดิจิทัลและแผนการจัดทำหน้าแรกศูนย์รวม (Landing Page Master Plan)</h1>
+        <div class="subtitle">ฝ่ายบริหารงานวิจัย คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร (iRAM MedNU Ecosystem)</div>
+    </header>
+
+    <section>
+        <p>รายงานฉบับนี้ทำการวิเคราะห์และประมวลผลระบบสารสนเทศ เว็บไซต์ แดชบอร์ด และเครื่องมือบริการดิจิทัลทั้งหมดที่เกี่ยวข้องกับงานวิจัยของคณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร <strong>รวมทั้งสิ้น 13 รายการ</strong> เพื่อจัดโครงสร้างสถาปัตยกรรมข้อมูล ยกระดับพอร์ตโฟลิโอผลงานเว็บไซต์ และสร้างแผนแม่บทในการออกแบบหน้าแรกที่เป็นจุดเชื่อมโยง (Landing Page) พร้อมติดตั้งโครงสร้างระบบ Footnote มาตรฐานเพื่อความง่ายในการพัฒนา บำรุงรักษา และระบุสิทธิ์ความรับผิดชอบของซอฟต์แวร์</p>
+    </section>
+
+    <section>
+        <h2>1. ตารางวิเคราะห์สถานภาพและระบบดิจิทัลทั้งหมด (Comprehensive Systems Audit)</h2>
+        <p>จากการตรวจสอบระบบนิเวศข้อมูลในปัจจุบัน สามารถจำแนกองค์ประกอบออกตามประเภทการให้บริการและแพลตฟอร์มโครงสร้างพื้นฐานดิจิทัลได้ดังนี้:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">ระบบ / แดชบอร์ด / เว็บไซต์</th>
+                    <th style="width: 50%;">ฟังก์ชันการทำงาน ความเกี่ยวข้องกัน และเป้าหมายทางข้อมูล</th>
+                    <th style="width: 25%;">สภาพแวดล้อมระบบ (Platform)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>iRAM KPI Dashboard</strong></td>
+                    <td>แดชบอร์ดติดตามข้อมูลงานวิจัยและทุนวิจัย ปีงบประมาณ 2567–2569 วิเคราะห์เจาะลึกงบประมาณ เงินรางวัล และค่านำส่งตีพิมพ์ Open Access (OA) ของคณะ</td>
+                    <td><span class="badge bg-nu">med.nu.ac.th</span> (Faculty Server)</td>
+                </tr>
+                <tr>
+                    <td><strong>iRAM-Services</strong></td>
+                    <td>แอปพลิเคชันบริการงานวิจัยแบบ Real-time แกนหลักระบบหลังบ้านสำหรับให้นักวิจัยยื่นฟอร์มโครงการและติดตามสถานะการดำเนินงาน</td>
+                    <td><span class="badge bg-cloudflare">Cloudflare Pages</span></td>
+                </tr>
+                <tr>
+                    <td><strong>iRAM Cloud Web App</strong></td>
+                    <td>เว็บแอปพลิเคชันระบบขับเคลื่อนอัตโนมัติ (Automation Tools) ทำหน้าที่ประมวลผลข้อมูล จัดการฟอร์ม และเชื่อมต่อฐานข้อมูลบนคลาวด์ของมหาวิทยาลัย</td>
+                    <td><span class="badge bg-gas">Google Apps Script</span> (NU Tenant)</td>
+                </tr>
+                <tr>
+                    <td><strong>MedNU Scopus Dashboard</strong></td>
+                    <td>ระบบทำ Research Analytics ดึงข้อมูลผ่าน Scopus API เพื่อวิเคราะห์ดัชนีชี้วัดสากล Citations, h-index และทำเนียบนักวิจัยเด่นของคณะ</td>
+                    <td><span class="badge bg-workers">Cloudflare Workers</span></td>
+                </tr>
+                <tr>
+                    <td><strong>iRAM-U Report</strong></td>
+                    <td>ระบบรายงานภาพรวมเชิงสถิติในยุคเริ่มต้น สำหรับนำเสนอตัวเลขสรุปพื้นฐานทางด้านงานวิจัย</td>
+                    <td><span class="badge bg-looker">Google Looker Studio</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Power BI Analytics (2 ลิงก์)</strong></td>
+                    <td>แดชบอร์ดรายงานเชิงนโยบายและระบบสนับสนุนการเปรียบเทียบตัวชี้วัดองค์กร มุ่งเน้นภาพรวมเชิงบริหารอ้างอิงกับโครงข่ายหลักของมหาวิทยาลัย</td>
+                    <td><span class="badge bg-pbi">Microsoft Power BI</span></td>
+                </tr>
+                <tr>
+                    <td><strong>MedResearch Main Portal</strong></td>
+                    <td>เว็บไซต์หลักของงานบริหารงานวิจัย คณะแพทยศาสตร์ เป็นหน้าต่างบานแรกสำหรับงานประชาสัมพันธ์ข่าวสาร ประกาศทุนวิจัย และกิจกรรมส่งเสริมวิจัยทั้งหมด</td>
+                    <td><span class="badge bg-nu">med.nu.ac.th</span> (Main Hub)</td>
+                </tr>
+                <tr>
+                    <td><strong>2WW Home Main</strong></td>
+                    <td>หน้าเว็บไซต์ฐานข้อมูลและระบบประชาสัมพันธ์ภายใน (เวอร์ชันระบบจัดการโครงสร้างเดิม) เชื่อมต่อข้อมูลกิจกรรมและข่าวสารงานวิจัย</td>
+                    <td><span class="badge bg-nu">med.nu.ac.th</span> (Legacy Core)</td>
+                </tr>
+                <tr>
+                    <td><strong>RAMU Sub-Portal</strong></td>
+                    <td>หน้าเพจเฉพาะของหน่วยบริหารงานวิจัยและจัดการนวัตกรรม (Research Administration and Management Unit) นำเสนอโครงสร้าง พันธกิจ และบทบาทหน้าที่หน่วยงาน</td>
+                    <td><span class="badge bg-nu">med.nu.ac.th</span> (Unit Profile)</td>
+                </tr>
+                <tr>
+                    <td><strong>Funding Operations Page</strong></td>
+                    <td>หน้าเพจการดำเนินงานและรวบรวมแหล่งทุนวิจัยทั้งภายในและภายนอก แจ้งหลักเกณฑ์และขั้นตอนการขอรับทุนสำหรับบุคลากร</td>
+                    <td><span class="badge bg-nu">med.nu.ac.th</span> (Operational Page)</td>
+                </tr>
+                <tr>
+                    <td><strong>RAM-U Reward Help Center</strong></td>
+                    <td>ศูนย์ช่วยเหลือและคู่มือการใช้งานระบบบริการขอรับเงินรางวัลสนับสนุนการตีพิมพ์/ผลงานวิชาการ อำนวยความสะดวกแก่นักวิจัยในการแก้ปัญหาและเรียนรู้วิธีการยื่นขอรับสิทธิ์</td>
+                    <td><span class="badge bg-sites">Google Sites</span> (Support Center)</td>
+                </tr>
+                <tr>
+                    <td><strong>Student NU Research Portal</strong></td>
+                    <td>ระบบสืบค้นโครงร่างและรายงานข้อมูลโครงการวิจัยรายบุคคลในอดีต (จัดทำช่วงปี 2018) ทำหน้าที่เป็นระบบต้นแบบทางความคิดของการจัดการฐานข้อมูลวิจัย</td>
+                    <td><span class="badge bg-legacy">student.nu.ac.th</span> (Legacy Portal)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>2. พิมพ์เขียวการวางระบบหมวดหมู่พร้อมเทมเพลต Footnote (Pillars Layout & Footnote Standards)</h2>
+        <p>เพื่อป้องกันความสับสนในการจัดการแอปพลิเคชันที่มีปริมาณมาก โครงสร้างระบบในแต่ละเสาหลัก (Pillar) ได้รับการติดตั้ง **Footnote รูปแบบแบ่งโซนข้อมูลสองฝั่ง (Split-Zone Footnote)** ที่แสดงรุ่น สภาพแวดล้อม และลิงก์คู่มือ/หลังบ้าน เพื่อความสะดวกในการแก้ไขโค้ด ดังนี้:</p>
+        
+        <div class="highlight-grid">
+            
+            <!-- Pillar 1 -->
+            <div class="grid-item">
+                <h4>🏛️ Pillar 1: Research Information & Hub (ศูนย์รวมข้อมูล ข่าวสาร และองค์กร)</h4>
+                <p>หมวดหมู่ประชาสัมพันธ์ ข้อมูลระเบียบ ประกาศทุน และโครงสร้างการบริหารงานวิจัยของคณะแพทย์</p>
+                <ul>
+                    <li><a href="http://med.nu.ac.th/medresearch/" target="_blank">เว็บไซต์หลักงานบริหารงานวิจัย (MedResearch Portal)</a></li>
+                    <li><a href="https://med.nu.ac.th/medresearch/2ww/home/main.php" target="_blank">ระบบหน้าแรกงานวิจัยภายใน (2WW Core Component)</a></li>
+                    <li><a href="https://med.nu.ac.th/medresearch/2ww/home/ramu.php" target="_blank">หน้าข้อมูลหน่วยบริหารงานวิจัยและนวัตกรรม (RAMU Profile)</a></li>
+                </ul>
+                <div class="tech-list">คีย์เวิร์ดไฟล์: index.php, main.php, ramu.php</div>
+                
+                <!-- Footnote ตัวอย่างสำหรับ Pillar 1 -->
+                <div class="page-footer">
+                    <div>© 2026 iRAM Ecosystem · คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร<br><small>หน่วยบริหารงานวิจัยและจัดการนวัตกรรม (RAMU)</small></div>
+                    <div style="text-align: right;"><span class="badge bg-nu">v1.2.0</span> <span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span><br><small>ติดต่อ: เจ้าหน้าที่บริหารงานวิจัย | <a href="about.html">About</a></small></div>
+                </div>
+            </div>
+            
+            <!-- Pillar 2 -->
+            <div class="grid-item" style="border-top-color: #319795;">
+                <h4>🚪 Pillar 2: Research Services & Support (ระบบบริการอิเล็กทรอนิกส์, เว็บแอป และศูนย์ช่วยเหลือ)</h4>
+                <p>แกนหลังเครื่องมือทำงานวิจัย (Operational Web Apps) สำหรับกรอกฟอร์ม ยื่นทุน ตรวจสอบระบบ Automation และอ่านคู่มือแก้ไขปัญหา</p>
+                <ul>
+                    <li><a href="https://iram-services.pages.dev/dashboard" target="_blank">ระบบบริการวิจัยและบริการวิชาการแบบ Real-time (iRAM-Services)</a></li>
+                    <li><a href="https://script.google.com/a/nu.ac.th/macros/s/AKfycbwvsP6cRJh9fEOb6LLCWzTP3cs4XyhWTne0-HBvcX-PVyRfROqPQYtDaUJfjc-TaL1k/exec" target="_blank">ระบบบริการและคลาวด์แอปพลิเคชันอัตโนมัติ (iRAM Cloud Automation)</a></li>
+                    <li><a href="https://med.nu.ac.th/medresearch/sub-ram-u/funding.php" target="_blank">หน้าเว็บดำเนินงานและยื่นเอกสารทุนวิจัย (Funding Operations)</a></li>
+                    <li><a href="https://sites.google.com/view/ram-u-reward-help-center/home" target="_blank">ศูนย์ช่วยเหลือและคู่มือระบบเงินรางวัล (RAM-U Reward Help Center)</a></li>
+                </ul>
+                <div class="tech-list">คีย์เวิร์ดไฟล์: cloudflare-pages-deploy, google-apps-script-macro, funding.php</div>
+                
+                <!-- Footnote ตัวอย่างสำหรับ Pillar 2 -->
+                <div class="page-footer">
+                    <div>© 2026 iRAM Operational Services · คณะแพทยศาสตร์ มน.<br><small>พัฒนาโดย นายทินกรณ์ หาญณรงค์ (tinnakornh@gmail.com)</small></div>
+                    <div style="text-align: right;"><span class="badge bg-cloudflare">v3.1.0</span> <span class="badge bg-gas">Multi-Cloud Node</span><br><small><a href="about.html">About System</a> · <a href="admin.html">Admin Portal</a></small></div>
+                </div>
+            </div>
+            
+            <!-- Pillar 3 -->
+            <div class="grid-item" style="border-top-color: #3182ce;">
+                <h4>📊 Pillar 3: Faculty Research Analytics (ระบบวิเคราะห์สถิติและตัวชี้วัดภายในคณะ)</h4>
+                <p>ระบบแดชบอร์ดระดับลึกในการเกาะติดสถิติ Citation นานาชาติ, h-index, เงินรางวัลทุนวิจัย และงบสนับสนุน Open Access (OA)</p>
+                <ul>
+                    <li><a href="https://med.nu.ac.th/medresearch/sub-ram-u/kpidashboard/iram-kpi-dashboard.html" target="_blank">แดชบอร์ดติดตามงานวิจัยและทุนวิจัยคณะ (iRAM KPI Dashboard)</a></li>
+                    <li><a href="https://mednu-scopus-dashboard.tinnakornh.workers.dev" target="_blank">ระบบวิเคราะห์ข้อมูลการตีพิมพ์ระดับสากล (MedNU Scopus Dashboard)</a></li>
+                    <li><a href="https://datastudio.google.com/s/qujr1f6tujY" target="_blank">รายงานสถิติมุมมองพื้นฐานเดิม (iRAM-U Report)</a></li>
+                </ul>
+                <div class="tech-list">คีย์เวิร์ดไฟล์: iram-kpi-dashboard.html, scopus-worker-script, looker-studio-id</div>
+                
+                <!-- Footnote ตัวอย่างสำหรับ Pillar 3 -->
+                <div class="page-footer">
+                    <div>© 2026 MedNU Research Analytics Portal<br><small>แหล่งข้อมูล: Scopus API & Central Research Database</small></div>
+                    <div style="text-align: right;"><span class="badge bg-workers">v4.0.2</span> <span class="badge bg-workers" style="background:#1e69ff;">Cloudflare Workers</span><br><small><a href="about.html">About Analytics</a> · <a href="admin.html">Sync Control</a></small></div>
+                </div>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="grid-item" style="border-top-color: #b7791f;">
+                <h4>🦅 Pillar 4: Institutional Business Intelligence (ระบบวิเคราะห์สถิติระดับมหาวิทยาลัย)</h4>
+                <p>รายงานสถิตินโยบายของส่วนกลางเพื่อสนับสนุนงานบริหาร ประกันคุณภาพ และเปรียบเทียบตัวชี้วัดภายในกรอบของมหาวิทยาลัยนเรศวร</p>
+                <ul>
+                    <li><a href="#" target="_blank">ระบบรายงานวิเคราะห์ข้อมูลและสรุปภาพรวมเชิงสถิติ (Power BI Analytics 1)</a></li>
+                    <li><a href="#" target="_blank">ระบบรายงานเปรียบเทียบตัวชี้วัดเพื่อการประกันคุณภาพ (Power BI KPI Report 2)</a></li>
+                </ul>
+                <div class="tech-list">คีย์เวิร์ดไฟล์: pbi-tenant-nu-report-1, pbi-tenant-nu-report-2</div>
+                
+                <!-- Footnote ตัวอย่างสำหรับ Pillar 4 -->
+                <div class="page-footer">
+                    <div>© 2026 Naresuan University Business Intelligence<br><small>Tenant ID: bf1eb3f8-19zd2-409d-b0c5-4e80cj943fd52</small></div>
+                    <div style="text-align: right;"><span class="badge bg-pbi" style="color:#fff !important;">v2.0.0</span> <span class="badge bg-pbi" style="background:#744210; color:#fff !important;">Microsoft Power BI</span><br><small>สถานะข้อมูล: อัปเดตรายไตรมาส · <a href="about.html">About BI</a></small></div>
+                </div>
+            </div>
+
+            <!-- Legacy Section -->
+            <div class="grid-item" style="border-top-color: #e53e3e; background-color: #fffaf5;">
+                <h4>📜 ส่วนเพิ่มเติม: Legacy Systems & Development History (ประวัติศาสตร์และระบบต้นแบบ)</h4>
+                <p>ระบบสืบค้นผลงานและรายงานวิจัยรายบุคคลในอดีต (เวอร์ชันดั้งเดิมปี 2018) ปัจจุบันทำหน้าที่เป็นคลังจัดเก็บและอ้างอิงวิวัฒนาการซอฟต์แวร์</p>
+                <ul>
+                    <li><a href="https://web.archive.org/web/20180606134350/http://student.nu.ac.th/tinnakornh/research/shwres1.php" target="_blank">ระบบสืบค้นโครงร่างวิจัยและรายงานผลรายบุคคล (เวอร์ชันปี 2018)</a></li>
+                </ul>
+                <div class="tech-list">คีย์เวิร์ดไฟล์: shwres1.php, legacy-mysql-structure</div>
+                
+                <!-- Footnote ตัวอย่างสำหรับ Legacy -->
+                <div class="page-footer" style="background-color: #fff5f5;">
+                    <div>© 2018 Legacy Student Research Archival<br><small>ผู้จัดทำดั้งเดิม: นิสิต นายทินกรณ์ หาญณรงค์</small></div>
+                    <div style="text-align: right;"><span class="badge bg-legacy">v1.0.0 (Archived)</span> <span class="badge bg-legacy" style="background:#9b2c2c;">PHP Legacy Stack</span><br><small>สถานะ: ปิดการปรับปรุงระบบถาวร</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Footer สำหรับหน้าหลัก Landing Page -->
+    <div class="master-footer">
+        <div class="page-footer" style="background-color: #1a365d; color: #ffffff;">
+            <div>
+                <strong>iRAM Comprehensive Research Digital Ecosystem Platform</strong><br>
+                <small style="color: #cbd5e0;">ฝ่ายบริหารงานวิจัย คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร</small>
+            </div>
+            <div style="text-align: right;">
+                <span class="badge bg-workers" style="background:#319795;">Ecosystem Master v5.2.0</span>
+                <span class="badge bg-nu" style="background:#dd6b20;">2026 Hub Deployment</span><br>
+                <small style="color: #cbd5e0;">Architected by Antigravity · Developer: นายทินกรณ์ หาญณรงค์ · <a href="about.html" style="color:#ebf8ff;">About System Portal</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
