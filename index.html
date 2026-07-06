@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รายงานการวิเคราะห์ระบบสารสนเทศและแผนการจัดทำ Landing Page - iRAM MedNU (Responsive UI Edition)</title>
+    <title>รายงานการวิเคราะห์ระบบสารสนเทศและแผนการจัดทำ Landing Page - iRAM MedNU (Absolute Final Ecosystem)</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         body {
@@ -77,25 +77,48 @@
         li {
             margin-bottom: 10px;
         }
-        /* Table Responsive Wrapper */
+
+        /* -------------------------------------------
+           TABLE SCROLL & RESPONSIVE DESIGN 
+           ------------------------------------------- */
         .table-responsive {
+            width: 100%;
+            display: block;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             margin: 25px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
+        .table-responsive::-webkit-scrollbar {
+            height: 10px;
+        }
+        .table-responsive::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 0 0 8px 8px;
+        }
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: #cbd5e0; 
+            border-radius: 10px;
+        }
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; 
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 10.5pt;
-            min-width: 800px; /* Force table width to prevent squishing on mobile */
+            min-width: 1000px; /* ขยายความกว้างขั้นต่ำเล็กน้อยเพื่อรองรับข้อมูลที่เพิ่มขึ้น */
         }
         th, td {
             border: 1px solid #e2e8f0;
-            padding: 14px 18px;
+            padding: 16px 18px;
             text-align: left;
             vertical-align: top;
+            word-break: break-word;
         }
         th {
             background-color: #1a365d;
@@ -104,10 +127,13 @@
             text-transform: uppercase;
             font-size: 10pt;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
         tr:nth-child(even) {
             background-color: #f8fafc;
         }
+        /* ------------------------------------------- */
+
         .badge {
             display: inline-block;
             padding: 4px 10px;
@@ -117,7 +143,9 @@
             color: #ffffff;
             text-align: center;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            word-break: break-all;
+            white-space: normal;
         }
         .bg-nu { background-color: #dd6b20; }
         .bg-cloudflare { background-color: #f48120; }
@@ -125,6 +153,9 @@
         .bg-github { background-color: #181717; }
         .bg-legacy { background-color: #e53e3e; }
         .bg-pbi { background-color: #b7791f; }
+        .bg-looker { background-color: #d69e2e; color: #fff !important; }
+        .bg-gas { background-color: #4285f4; }
+        .bg-sites { background-color: #4a5568; }
         
         .recommendation-box {
             background-color: #f7fafc;
@@ -187,7 +218,7 @@
             color: #3182ce;
             text-decoration: none;
             font-weight: 600;
-            word-break: break-word; /* Prevent long links from breaking layout */
+            word-break: break-word;
         }
         a:hover {
             text-decoration: underline;
@@ -291,8 +322,8 @@
     </section>
 
     <section>
-        <h2>1. โครงสร้างสถาปัตยกรรมคลังรหัสและระบบจัดส่งอัตโนมัติ (CI/CD DevOps Architecture)</h2>
-        <p>ระบบนิเวศ iRAM ถูกขับเคลื่อนด้วยสถาปัตยกรรมแบบ <strong>Microservices</strong> ที่มีการแยกส่วนระหว่างระบบหน้าบ้าน (Frontend UI) และระบบหลังบ้าน (Backend API & Database) อย่างชัดเจน โดยใช้ GitHub เป็นศูนย์กลางคลังรหัส (Source of Truth) และทำงานร่วมกับ Cloudflare เพื่อปรับใช้ (Deploy) อัตโนมัติ</p>
+        <h2>1. โครงสร้างสถาปัตยกรรมคลังรหัสและระบบจัดส่งอัตโนมัติ (Comprehensive Systems Audit & CI/CD DevOps)</h2>
+        <p>ระบบนิเวศ iRAM ถูกขับเคลื่อนด้วยสถาปัตยกรรมแบบ <strong>Microservices</strong> ที่มีการแยกส่วนระหว่างระบบหน้าบ้าน (Frontend UI) และระบบหลังบ้าน (Backend API & Database) อย่างชัดเจน โดยใช้ GitHub เป็นศูนย์กลางคลังรหัส (Source of Truth) และทำงานร่วมกับ Cloudflare เพื่อปรับใช้ (Deploy) อัตโนมัติ ผนวกร่วมกับระบบคลาวด์และเซิร์ฟเวอร์ดั้งเดิมอย่างสมบูรณ์แบบ</p>
         
         <div class="devops-flow">
             <div class="devops-step">
@@ -315,71 +346,130 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 25%;">โดเมนและบริการ<br>(Cloudflare Network)</th>
-                        <th style="width: 25%;">ประเภทแพลตฟอร์ม<br>(Infrastructure)</th>
-                        <th style="width: 30%;">คลังซอร์สโค้ด GitHub<br>(Repository)</th>
-                        <th style="width: 20%;">หน้าที่ในระบบนิเวศ<br>(Microservice Role)</th>
+                        <th style="width: 30%;">ระบบ / แดชบอร์ด / เว็บไซต์<br>(System & Domain)</th>
+                        <th style="width: 30%;">แพลตฟอร์ม & ซอร์สโค้ด<br>(Infrastructure & Repository)</th>
+                        <th style="width: 40%;">หน้าที่ในระบบนิเวศ<br>(Microservice Role)</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Section 1: Frontend -->
                     <tr style="background-color: #ebf8ff;">
-                        <td colspan="4" style="font-weight:bold; color:#2b6cb0;">🌐 ระบบแอปพลิเคชันหน้าบ้าน (Frontend UI / SPA)</td>
+                        <td colspan="3" style="font-weight:bold; color:#2b6cb0;">🌐 ระบบแอปพลิเคชันหน้าบ้านและศูนย์รวมข้อมูล (Frontend UI & Portals)</td>
                     </tr>
                     <tr>
-                        <td><strong>iram-ecosystem</strong><br><small>.pages.dev</small></td>
-                        <td><span class="badge bg-cloudflare">Cloudflare Pages</span></td>
-                        <td><span class="badge bg-github">SolarXtr/iram-ecosystem</span></td>
-                        <td>หน้าแรกศูนย์รวมระบบ (Landing Page)</td>
+                        <td><strong>หน้าแรกศูนย์รวมระบบ (iRAM Ecosystem)</strong><br><small>iram-ecosystem.pages.dev</small></td>
+                        <td><span class="badge bg-cloudflare">Cloudflare Pages</span><br><span class="badge bg-github" style="margin-top:4px;">SolarXtr/iram-ecosystem</span></td>
+                        <td>หน้าแรกศูนย์รวมระบบ (Landing Page) เชื่อมโยงสถาปัตยกรรมข้อมูลและระบบนิเวศดิจิทัลทั้งหมด</td>
                     </tr>
                     <tr>
-                        <td><strong>iram-services</strong><br><small>.pages.dev</small></td>
-                        <td><span class="badge bg-cloudflare">Cloudflare Pages</span></td>
-                        <td><span class="badge bg-github">SolarXtr/iram-services</span></td>
-                        <td>หน้าต่างบริการ และ Portfolio</td>
+                        <td><strong>ระบบบริการวิจัย (iRAM-Services)</strong><br><small>iram-services.pages.dev</small></td>
+                        <td><span class="badge bg-cloudflare">Cloudflare Pages</span><br><span class="badge bg-github" style="margin-top:4px;">SolarXtr/iram-services</span></td>
+                        <td>แอปพลิเคชันบริการงานวิจัยแบบ Real-time แกนหลักสำหรับให้นักวิจัยยื่นฟอร์มโครงการและติดตามสถานะการดำเนินงาน</td>
                     </tr>
                     <tr>
-                        <td><strong>medicine-citation-h-index</strong><br><small>.pages.dev</small></td>
-                        <td><span class="badge bg-cloudflare">Cloudflare Pages</span></td>
-                        <td><span class="badge bg-github">SolarXtr/citation-report</span></td>
-                        <td>หน้าแสดงรายงาน Citation/h-index</td>
+                        <td><strong>รายงาน Citation/h-index</strong><br><small>medicine-citation-h-index.pages.dev</small></td>
+                        <td><span class="badge bg-cloudflare">Cloudflare Pages</span><br><span class="badge bg-github" style="margin-top:4px;">SolarXtr/citation-report</span></td>
+                        <td>หน้าแสดงรายงาน Citation/h-index และทำ Research Analytics เพื่อวิเคราะห์ดัชนีชี้วัดสากล</td>
+                    </tr>
+                    <tr>
+                        <td><strong>เว็บไซต์หลักงานบริหารงานวิจัย (MedResearch Portal)</strong><br><small>med.nu.ac.th/medresearch/</small></td>
+                        <td><span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span><br><span class="badge bg-nu" style="background:#718096; margin-top:4px;"><em>On-Premise Deployment</em></span></td>
+                        <td>เว็บไซต์หลักของงานบริหารงานวิจัย เป็นหน้าต่างบานแรกสำหรับงานประชาสัมพันธ์ข่าวสาร ประกาศทุนวิจัย และกิจกรรม</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบหน้าแรกงานวิจัยภายใน (2WW Core)</strong><br><small>med.nu.ac.th/medresearch/2ww/home/main.php</small></td>
+                        <td><span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span><br><span class="badge bg-nu" style="background:#718096; margin-top:4px;"><em>On-Premise Deployment</em></span></td>
+                        <td>หน้าเว็บไซต์ฐานข้อมูลและระบบประชาสัมพันธ์ภายใน เชื่อมต่อข้อมูลกิจกรรมและข่าวสารงานวิจัย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>หน้าข้อมูลหน่วยบริหารงานวิจัย (RAMU)</strong><br><small>med.nu.ac.th/medresearch/2ww/home/ramu.php</small></td>
+                        <td><span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span><br><span class="badge bg-nu" style="background:#718096; margin-top:4px;"><em>On-Premise Deployment</em></span></td>
+                        <td>หน้าเพจเฉพาะของหน่วย RAMU นำเสนอโครงสร้าง พันธกิจ และบทบาทหน้าที่หน่วยงาน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบดำเนินงานและยื่นเอกสารทุนวิจัย</strong><br><small>med.nu.ac.th/medresearch/sub-ram-u/funding.php</small></td>
+                        <td><span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span><br><span class="badge bg-nu" style="background:#718096; margin-top:4px;"><em>On-Premise Deployment</em></span></td>
+                        <td>หน้าเพจการดำเนินงานและรวบรวมแหล่งทุนวิจัยทั้งภายในและภายนอก แจ้งหลักเกณฑ์การขอรับทุน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ศูนย์ช่วยเหลือระบบเงินรางวัล (Help Center)</strong><br><small>sites.google.com/view/ram-u-reward-help-center</small></td>
+                        <td><span class="badge bg-sites">Google Sites</span><br><span class="badge bg-sites" style="background:#718096; margin-top:4px;"><em>Google Workspace</em></span></td>
+                        <td>ศูนย์ช่วยเหลือและคู่มือการใช้งานระบบบริการขอรับเงินรางวัลสนับสนุน อำนวยความสะดวกแก่นักวิจัย</td>
                     </tr>
 
+                    <!-- Section 2: Backend -->
                     <tr style="background-color: #f0fff4;">
-                        <td colspan="4" style="font-weight:bold; color:#276749;">⚙️ ระบบประมวลผลหลังบ้านและ API (Backend Services & APIs)</td>
+                        <td colspan="3" style="font-weight:bold; color:#276749;">⚙️ ระบบประมวลผลหลังบ้านและ API (Backend Services & APIs)</td>
                     </tr>
                     <tr>
-                        <td><strong>mednu-scopus-dashboard</strong><br><small>.tinnakornh.workers.dev</small></td>
-                        <td><span class="badge bg-workers">Cloudflare Workers</span></td>
-                        <td><span class="badge bg-github">SolarXtr/resmednuproduction</span></td>
-                        <td>API ประมวลผลและดึงข้อมูลจาก Scopus</td>
+                        <td><strong>MedNU Scopus Dashboard API</strong><br><small>mednu-scopus-dashboard.tinnakornh.workers.dev</small></td>
+                        <td><span class="badge bg-workers">Cloudflare Workers</span><br><span class="badge bg-github" style="margin-top:4px;">SolarXtr/resmednuproduction</span></td>
+                        <td>API ประมวลผลและดึงข้อมูลผ่าน Scopus API เพื่อวิเคราะห์ดัชนีชี้วัดสากล Citations, h-index และทำเนียบนักวิจัยเด่นของคณะ</td>
                     </tr>
                     <tr>
-                        <td><strong>iram-services</strong><br><small>.tinnakornh.workers.dev</small></td>
-                        <td><span class="badge bg-workers">Cloudflare Workers</span></td>
-                        <td><em>(Manual Deploy / Direct Wrangler)</em></td>
-                        <td>API แกนกลางสำหรับระบบบริการข้อมูล</td>
+                        <td><strong>iRAM-Services API</strong><br><small>iram-services.tinnakornh.workers.dev</small></td>
+                        <td><span class="badge bg-workers">Cloudflare Workers</span><br><span class="badge bg-github" style="margin-top:4px;"><em>(Manual Deploy / Direct Wrangler)</em></span></td>
+                        <td>API แกนกลางระบบหลังบ้านสำหรับแอปพลิเคชันบริการงานวิจัยแบบ Real-time ในการจัดการฟอร์มและติดตามสถานะ</td>
                     </tr>
                     <tr>
-                        <td><strong>iram-experience</strong><br><small>.tinnakornh.workers.dev</small></td>
-                        <td><span class="badge bg-workers">Cloudflare Workers</span></td>
-                        <td><em>(Manual Deploy / Direct Wrangler)</em></td>
-                        <td>ระบบประสบการณ์ผู้ใช้งาน/ประมวลผลเสริม</td>
+                        <td><strong>iRAM Experience</strong><br><small>iram-experience.tinnakornh.workers.dev</small></td>
+                        <td><span class="badge bg-workers">Cloudflare Workers</span><br><span class="badge bg-github" style="margin-top:4px;"><em>(Manual Deploy / Direct Wrangler)</em></span></td>
+                        <td>ระบบประสบการณ์ผู้ใช้งาน/ประมวลผลเสริม เพื่อสนับสนุนการตัดสินใจและการเข้าถึงข้อมูลวิจัย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบคลาวด์และขับเคลื่อนอัตโนมัติ (Google Apps Script)</strong><br><small>script.google.com/a/nu.ac.th/macros/...</small></td>
+                        <td><span class="badge bg-gas">Google Apps Script</span><br><span class="badge bg-gas" style="background:#718096; margin-top:4px;"><em>NU Tenant (V8 Engine)</em></span></td>
+                        <td>เว็บแอปพลิเคชันระบบขับเคลื่อนอัตโนมัติ ทำหน้าที่ประมวลผลข้อมูล จัดการฟอร์ม และเชื่อมต่อฐานข้อมูลบนคลาวด์</td>
                     </tr>
 
+                    <!-- Section 3: Databases -->
                     <tr style="background-color: #fff5f5;">
-                        <td colspan="4" style="font-weight:bold; color:#9b2c2c;">🗄️ ฐานข้อมูลและเครื่องมือ (Serverless DB Tools)</td>
+                        <td colspan="3" style="font-weight:bold; color:#9b2c2c;">🗄️ ฐานข้อมูลและเครื่องมือ (Serverless DB Tools)</td>
                     </tr>
                     <tr>
-                        <td><strong>d1-iram-template</strong><br><small>.tinnakornh.workers.dev</small></td>
-                        <td><span class="badge bg-workers">Cloudflare D1 / Workers</span></td>
-                        <td><span class="badge bg-github">SolarXtr/d1-iram-template</span></td>
-                        <td>เทมเพลตต้นแบบฐานข้อมูล SQL แบบไร้เซิร์ฟเวอร์</td>
+                        <td><strong>D1 iRAM Template</strong><br><small>d1-iram-template.tinnakornh.workers.dev</small></td>
+                        <td><span class="badge bg-workers">Cloudflare D1 / Workers</span><br><span class="badge bg-github" style="margin-top:4px;">SolarXtr/d1-iram-template</span></td>
+                        <td>เทมเพลตต้นแบบฐานข้อมูล SQL แบบไร้เซิร์ฟเวอร์ สำหรับการจัดการโครงสร้างฐานข้อมูลวิจัย</td>
                     </tr>
                     <tr>
-                        <td><strong>iram-db-viewer</strong><br><small>(No active routes)</small></td>
-                        <td><span class="badge bg-workers">Cloudflare Tooling</span></td>
-                        <td><em>(Internal Tool)</em></td>
-                        <td>เครื่องมือส่องดูและจัดการข้อมูล D1 Database</td>
+                        <td><strong>iRAM DB Viewer</strong><br><small>(No active routes)</small></td>
+                        <td><span class="badge bg-workers">Cloudflare Tooling</span><br><span class="badge bg-github" style="margin-top:4px;"><em>(Internal Tool)</em></span></td>
+                        <td>เครื่องมือส่องดูและจัดการข้อมูล D1 Database สำหรับตรวจสอบและบริหารจัดการระบบหลังบ้าน</td>
+                    </tr>
+
+                    <!-- Section 4: Enterprise Analytics -->
+                    <tr style="background-color: #fffff0;">
+                        <td colspan="3" style="font-weight:bold; color:#b7791f;">📊 ระบบวิเคราะห์ข้อมูลระดับองค์กร (Enterprise Data Analytics)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>แดชบอร์ดติดตามงานวิจัยและทุนวิจัยคณะ (iRAM KPI)</strong><br><small>med.nu.ac.th/medresearch/sub-ram-u/kpidashboard/iram-kpi-dashboard.html</small></td>
+                        <td><span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span><br><span class="badge bg-nu" style="background:#718096; margin-top:4px;"><em>On-Premise Deployment</em></span></td>
+                        <td>แดชบอร์ดติดตามข้อมูลงานวิจัย ปีงบ 2567–2569 วิเคราะห์เจาะลึกงบประมาณ เงินรางวัล และค่า Open Access (OA)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>รายงานสถิติมุมมองพื้นฐานทางงานวิจัย (iRAM-U)</strong><br><small>datastudio.google.com/s/qujr1f6tujY</small></td>
+                        <td><span class="badge bg-looker">Google Looker Studio</span><br><span class="badge bg-looker" style="background:#718096; margin-top:4px;"><em>Google Data Studio</em></span></td>
+                        <td>ระบบรายงานภาพรวมเชิงสถิติในยุคเริ่มต้น สำหรับนำเสนอตัวเลขสรุปพื้นฐานทางด้านงานวิจัย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบรายงานวิเคราะห์ข้อมูลและสรุปภาพรวมเชิงสถิติ</strong><br><small>app.powerbi.com/view?r=... (Report 1)</small></td>
+                        <td><span class="badge bg-pbi" style="background:#744210; color:#fff !important;">Microsoft Power BI</span><br><span class="badge bg-pbi" style="background:#718096; color:#fff !important; margin-top:4px;"><em>NU Tenant</em></span></td>
+                        <td>แดชบอร์ดรายงานเชิงนโยบาย มุ่งเน้นภาพรวมเชิงบริหารอ้างอิงกับโครงข่ายหลักของมหาวิทยาลัย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบรายงานเปรียบเทียบตัวชี้วัดเพื่อการประกันคุณภาพ</strong><br><small>app.powerbi.com/view?r=... (Report 2)</small></td>
+                        <td><span class="badge bg-pbi" style="background:#744210; color:#fff !important;">Microsoft Power BI</span><br><span class="badge bg-pbi" style="background:#718096; color:#fff !important; margin-top:4px;"><em>NU Tenant</em></span></td>
+                        <td>ระบบสนับสนุนการเปรียบเทียบตัวชี้วัดองค์กรและการประกันคุณภาพวิจัยระดับมหาวิทยาลัย</td>
+                    </tr>
+
+                    <!-- Section 5: Legacy -->
+                    <tr style="background-color: #fff5f5;">
+                        <td colspan="3" style="font-weight:bold; color:#e53e3e;">📜 ประวัติศาสตร์และระบบต้นแบบ (Legacy Systems)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบฐานข้อมูลสืบค้นโครงร่างวิจัย (เวอร์ชันปี 2018)</strong><br><small>student.nu.ac.th/tinnakornh/research/shwres1.php</small></td>
+                        <td><span class="badge bg-legacy" style="background:#9b2c2c;">PHP Legacy Stack</span><br><span class="badge bg-legacy" style="background:#718096; margin-top:4px;"><em>Web Archive / MySQL</em></span></td>
+                        <td>ระบบสืบค้นข้อมูลโครงการวิจัยรายบุคคลในอดีต (จัดทำช่วงปี 2018) ระบบต้นแบบทางความคิดของการจัดการฐานข้อมูลวิจัย</td>
                     </tr>
                 </tbody>
             </table>
@@ -397,11 +487,11 @@
                 <ul>
                     <li><a href="http://med.nu.ac.th/medresearch/" target="_blank">เว็บไซต์หลักงานบริหารงานวิจัย (MedResearch Portal)</a></li>
                     <li><a href="https://med.nu.ac.th/medresearch/2ww/home/main.php" target="_blank">ระบบหน้าแรกงานวิจัยภายใน (2WW Core Component)</a></li>
-                    <li><a href="https://med.nu.ac.th/medresearch/2ww/home/ramu.php" target="_blank">หน้าข้อมูลหน่วยบริหารงานวิจัยและจัดการนวัตกรรม (RAMU)</a></li>
+                    <li><a href="https://med.nu.ac.th/medresearch/2ww/home/ramu.php" target="_blank">หน้าข้อมูลหน่วยบริหารและจัดการงานวิจัย คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร</a></li>
                 </ul>
                 <div class="tech-list">Hosting: Faculty Server (On-Premise)</div>
                 <div class="page-footer">
-                    <div>© 2026 iRAM Ecosystem<br><small>หน่วยบริหารงานวิจัยและจัดการนวัตกรรม (RAMU)</small></div>
+                    <div>© 2026 iRAM Ecosystem<br><small>หน่วยบริหารและจัดการงานวิจัย คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร</small></div>
                     <div style="text-align: right;"><span class="badge bg-nu" style="background:#4a5568;">Faculty IIS Server</span></div>
                 </div>
             </div>
@@ -417,7 +507,7 @@
                 </ul>
                 <div class="tech-list">CI/CD & Cloud: GitHub ➔ Cloudflare Pages / Google Workspace</div>
                 <div class="page-footer">
-                    <div>© 2026 iRAM Operational Services<br><small>พัฒนาโดย นายทินกรณ์ หาญณรงค์</small></div>
+                    <div>© 2026 iRAM Operational Services<br><small>พัฒนาโดย นายทินกรณ์ หาญณรงค์ (เจ้าหน้าที่วิจัย วท.ม. เทคโนโลยีสารสนเทศ)</small></div>
                     <div style="text-align: right;"><span class="badge bg-cloudflare">Pages</span> <span class="badge bg-github">SolarXtr</span></div>
                 </div>
             </div>
@@ -461,7 +551,7 @@
                 </ul>
                 <div class="tech-list">Legacy Tech: PHP, MySQL, student.nu.ac.th Platform</div>
                 <div class="page-footer" style="background-color: #fff5f5;">
-                    <div>© 2018 Legacy Student Research Archival<br><small>ผู้จัดทำดั้งเดิม: นายทินกรณ์ หาญณรงค์</small></div>
+                    <div>© 2018 Legacy Student Research Archival<br><small>ผู้จัดทำดั้งเดิม: นิสิต นายทินกรณ์ หาญณรงค์</small></div>
                     <div style="text-align: right;"><span class="badge bg-legacy">Archived</span> <span class="badge bg-legacy" style="background:#9b2c2c;">PHP Legacy Stack</span></div>
                 </div>
             </div>
@@ -494,10 +584,10 @@
             <div class="ai-icon">✨</div>
             <div>
                 <h4 style="margin: 0 0 5px 0; color: #15803d; font-size: 13pt;">Human-AI Collaboration System</h4>
-                <p style="margin: 0; font-weight: 600; color: #2d3748; font-size: 11.5pt;">ร่วมพัฒนาและร้อยเรียงสถาปัตยกรรมโดย: นายทินกรณ์ หาญณรงค์ (Full-Stack Developer) & Google Gemini (AI Assistant)</p>
+                <p style="margin: 0; font-weight: 600; color: #2d3748; font-size: 11.5pt;">ร่วมพัฒนาและร้อยเรียงสถาปัตยกรรมโดย: นายทินกรณ์ หาญณรงค์ (เจ้าหน้าที่วิจัย) & Google Gemini (AI Assistant)</p>
                 <div style="margin-top: 8px; font-size: 9.5pt; color: #718096;">
                     <strong>ขอบเขตความร่วมมือ:</strong> วิเคราะห์โครงสร้าง Microservices, จัดกลุ่ม UI/UX Segmentation, กำหนดมาตรฐาน Footnote & CI/CD Pipeline, และจัดทำ HTML Blueprint Framework<br>
-                    <strong>การปรับปรุง UX/UI & Responsive:</strong> พัฒนาระบบรองรับหน้าจอทุกขนาด (Mobile-First) พร้อมแสดงผลข้อมูลตารางแบบลื่นไหลไร้ขอบ
+                    <strong>การบูรณาการข้อมูลล่าสุด (Absolute Final Sync):</strong> รวมระบบทั้งหมด 18 รายการ (Cloudflare, GitHub, Faculty Server, Power BI, Legacy) เข้าสู่ตารางวิเคราะห์สถาปัตยกรรมอย่างสมบูรณ์แบบ
                 </div>
             </div>
         </div>
@@ -508,12 +598,12 @@
         <div class="page-footer" style="background-color: #1a365d; color: #ffffff;">
             <div>
                 <strong>iRAM Comprehensive Research Digital Ecosystem Platform</strong><br>
-                <small style="color: #cbd5e0;">หน่วยบริหารและจัดการงานวิจัย(RAM-U) งานวิจัย คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร</small>
+                <small style="color: #cbd5e0;">หน่วยบริหารและจัดการงานวิจัย คณะแพทยศาสตร์ มหาวิทยาลัยนเรศวร</small>
             </div>
             <div style="text-align: right;">
                 <span class="badge bg-cloudflare" style="background:#f48120;">DevOps Mastery</span>
                 <span class="badge bg-nu" style="background:#dd6b20;">2026 Deployment</span><br>
-                <small style="color: #cbd5e0;">Architected by Antigravity (Tinnakorn H.) in collaboration with Google Gemini</small>
+                <small style="color: #cbd5e0;">Architected by Tinnakorn Hannarong in collaboration with Google Gemini</small>
             </div>
         </div>
     </div>
