@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRAM Centralized Analytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+        }
+        .chart-container {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .nav-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">← Back to Ecosystem</a>
+        <h1>📊 Centralized Analytics Dashboard</h1>
+        
+        <table id="analytics-table">
+            <thead>
+                <tr>
+                    <th>Domain</th>
+                    <th>Path</th>
+                    <th>Total Views</th>
+                    <th>Today</th>
+                    <th>This Month</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="5" style="text-align:center;">Loading data from live API...</td></tr>
+            </tbody>
+        </table>
+
+        <div class="chart-container">
+            <canvas id="viewsChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        async function loadAnalytics() {
+            try {
+                const res = await fetch('https://iram-backend.tinnakornh.workers.dev/api/analytics/summary');
+                const data = await res.json();
+                
+                const tbody = document.querySelector('#analytics-table tbody');
+                tbody.innerHTML = '';
+                
+                const labels = [];
+                const totalData = [];
+                
+                data.forEach(row => {
+                    labels.push(row.domain + row.path);
+                    totalData.push(row.totalViews);
+                    
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.domain}</td>
+                        <td>${row.path}</td>
+                        <td><strong>${row.totalViews}</strong></td>
+                        <td>${row.viewsToday || 0}</td>
+                        <td>${row.viewsThisMonth || 0}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                // Render Chart
+                const ctx = document.getElementById('viewsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Views by Path',
+                            data: totalData,
+                            backgroundColor: '#2563eb',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+
+            } catch (err) {
+                console.error(err);
+                document.querySelector('#analytics-table tbody').innerHTML = '<tr><td colspan="5">Failed to load analytics data.</td></tr>';
+            }
+        }
+        loadAnalytics();
+    </script>
+</body>
+</html>
