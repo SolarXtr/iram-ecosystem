@@ -20,5 +20,14 @@
   - Restored missing links in the Institutional BI (Pillar 4) for Power BI Analytics and KPI Comparison reports.
 - **Scopus Dashboard Link**: Updated the MedNU Scopus Dashboard link to point directly to its new production domain (`mednu-scopus-dashboard.pages.dev`).
 
+## [2026-07-24] - Citation Tracker & DevOps Automation Update
+
+**Executed by:** Antigravity Agent & User Collaboration
+
+### Added
+- **Citation & H-Index Tracker**: Integrated a new link for the Citation & H-Index Tracker in Pillar 3 (Analytics) on both the main ecosystem portal (`index.html`) and the legacy blueprint (`blueprint.html`).
+- **Analytics & Tracking**: Added `analytics.html` page and `tracker.js` script to the repository for enhanced monitoring.
+- **GitHub Actions**: Created `.github/workflows/deploy.yml` to establish CI/CD automation directly from the repository.
+
 ---
 *Note: This log documents the automated and collaborative development process driven by the Antigravity Agent acting upon user instructions.*
